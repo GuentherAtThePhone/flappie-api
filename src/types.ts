@@ -62,6 +62,7 @@ export interface DeviceSettings {
   catflap_id: string;
   open_status: DoorPolicy;
   power_off_open_status: boolean;
+  entry_sound: boolean;
   buttons_enabled: boolean;
   rfid: boolean;
   prey_detection: boolean;
@@ -79,6 +80,7 @@ export interface DeviceSettings {
 export interface DeviceSettingsPatch {
   open_status?: DoorPolicy;
   power_off_open_status?: boolean;
+  entry_sound?: boolean;
   buttons_enabled?: boolean;
   prey_detection_user_preference?: boolean;
   prey_timed_lock_enabled?: boolean;

@@ -88,7 +88,7 @@ Login response: `{ access_token, refresh_token, token_type }`.
 | GET | `/api/v1/devices/<id>/information` | — | ✅ part of `flappie status` |
 | GET | `/api/v1/devices/<id>/status` | — | ✅ part of `flappie status` |
 | GET | `/api/v1/devices<id>/settings` | — (note: no slash before id) | ✅ `flappie settings` |
-| PATCH | `/api/v1/devices<id>/settings` | any subset of `{ open_status, power_off_open_status, buttons_enabled, prey_detection_user_preference, prey_timed_lock_enabled, prey_timed_lock_duration_seconds, rfid }` | ✅ `flappie lock`, `unlock`, `policy`, `ai`, `buttons`, `power-off-policy` |
+| PATCH | `/api/v1/devices<id>/settings` | any subset of `{ open_status, power_off_open_status, entry_sound, buttons_enabled, prey_detection_user_preference, prey_timed_lock_enabled, prey_timed_lock_duration_seconds, rfid }` | ✅ `flappie lock`, `unlock`, `policy`, `ai`, `buttons`, `entry-sound`, `power-off-policy` |
 | PATCH | `/api/v1/devices<id>` | `{ name }` | ✅ `flappie set-name` |
 | PATCH | `/api/v1/devices<id>` | `{ zone_info, country_code, ... }` (location) | 🟡 |
 | POST | `/api/v1/devices/assign` | `{ id }` (claim a device) | 🔒 (foot-gun) |
@@ -102,6 +102,7 @@ Settings response shape (live):
   "catflap_id": "<device-id>",
   "open_status": "OPEN",
   "power_off_open_status": false,
+  "entry_sound": false,
   "buttons_enabled": false,
   "rfid": false,
   "prey_detection": false,
@@ -116,7 +117,7 @@ Settings response shape (live):
 }
 ```
 
-`power_off_open_status` is a boolean; setting it to `true` or `false` via `PATCH /settings` has been verified. `PATCH /settings` returns the updated settings object (use it in lieu of a follow-up GET).
+`power_off_open_status` is a boolean; setting it to `true` or `false` via `PATCH /settings` has been verified. `entry_sound` is also a boolean; setting it to `true` or `false` via `PATCH /settings` has been verified. `PATCH /settings` returns the updated settings object (use it in lieu of a follow-up GET).
 
 ## Time plans
 

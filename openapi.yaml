@@ -983,6 +983,7 @@ components:
         catflap_id: { type: string }
         open_status: { $ref: "#/components/schemas/DoorPolicy" }
         power_off_open_status: { type: boolean }
+        entry_sound: { type: boolean }
         buttons_enabled: { type: boolean }
         rfid: { type: boolean }
         prey_detection: { type: boolean }
@@ -999,6 +1000,7 @@ components:
       properties:
         open_status: { $ref: "#/components/schemas/DoorPolicy" }
         power_off_open_status: { type: boolean }
+        entry_sound: { type: boolean }
         buttons_enabled: { type: boolean }
         prey_detection_user_preference: { type: boolean }
         prey_timed_lock_enabled: { type: boolean }

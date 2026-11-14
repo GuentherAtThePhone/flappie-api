@@ -207,6 +207,17 @@ program
   }));
 
 program
+  .command("entry-sound <state> [device]")
+  .description("Enable/disable the entry sound")
+  .action(wrap(async (state: string, ref?: string) => {
+    const entry_sound = parseBool(state);
+    const c = client();
+    const d = resolveDevice(await c.listDevices(), ref);
+    const updated = await c.patchDeviceSettings(d.id, { entry_sound });
+    console.log(`${d.name ?? d.id}: entry_sound=${updated.entry_sound ? "on" : "off"}`);
+  }));
+
+program
   .command("ai <state> [device]")
   .description("Turn prey detection AI on/off")
   .action(wrap(async (state: string, ref?: string) => {
